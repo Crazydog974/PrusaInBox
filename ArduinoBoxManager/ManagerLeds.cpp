@@ -9,7 +9,7 @@
 Adafruit_NeoPixel pixels(NUMPIXELS, PINLEDS, NEO_BRG + NEO_KHZ800);
 
 bool ledsIsOn = false;
-uint32_t colorLeds;
+uint32_t colorLeds = pixels.Color(255, 0, 255);
 
 int frondLeds[8] = {24,25,26,27,28,29,30,31};
 int leftLeds[8] = {16,17,18,19,20,21,22,23};
@@ -21,29 +21,49 @@ void ledsSetup(){
   pixels.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
   pixels.show();            // Turn OFF all pixels ASAP
   pixels.setBrightness(255); // Set BRIGHTNESS to about 1/5 (max = 255)
-  LedsOff();
+  colorLeds = pixels.Color(255, 0, 255);
+  ManageAllLeds(pixels.Color(0,0,0));
 }
 
 void ManageLeds(String cmd)
 {
    Serial.println("Go ManageLeds:" + cmd);  
-   
-   //Leds on  
+   //*****************************
+   //Leds on and off 
+   //*****************************
    if(cmd.equalsIgnoreCase("leds:on")){
       Serial.println("Go stardLeds"); 
       LedsOn();
    }
-   //Leds off 
    if(cmd.equalsIgnoreCase("leds:off")){
       Serial.println("Go stardLeds"); 
       LedsOff();
    }
+   //*****************************
    //Flash
+   //*****************************
    if(cmd.equalsIgnoreCase("leds:flashon")){
       flashOn();
    }
    if(cmd.equalsIgnoreCase("leds:flashoff")){
       flashOff();
+   }
+   //*****************************
+   //Leds color
+   //*****************************
+   if(cmd.startsWith("leds:color:")){
+      
+      cmd.replace("leds:color:", "");
+      Serial.println("color = " + cmd);  
+      
+      int indR = cmd.indexOf(':');
+      int r = cmd.substring(0,indR ).toInt();
+      int indG = cmd.indexOf(':', indR+1 );
+      int g=cmd.substring(indR+1, indG+1).toInt();
+      int b=cmd.substring(indG+1).toInt();
+      Serial.println("r = " + (String)r + " g= "+ (String)g + " b= " + (String)b); 
+      colorLeds = pixels.Color(r, g, b);
+      ManageAllLeds(colorLeds);
    }
 }
 
@@ -80,8 +100,7 @@ void ManageLineLeds(int tabLeds[8],uint32_t color, bool withShow)
 }
 
 void ManageAllLeds(uint32_t color)
-{
-    colorLeds = color;
+{   
     ManageLineLeds(frondLeds,color, false);    
     ManageLineLeds(leftLeds,color, false);
     ManageLineLeds(rightLeds,color, false);
@@ -100,10 +119,10 @@ void LedsOn(){
   ManageAllLeds(pixels.Color(0,0,0));
   delay(100);
   
-  colorWipe(rightLeds,pixels.Color(255, 0, 255),25);
-  colorWipe(backLeds,pixels.Color(255, 0, 255),25);
-  colorWipe(leftLeds,pixels.Color(255, 0, 255),25);
-  colorWipe(frondLeds,pixels.Color(255, 0, 255),25);
+  colorWipe(rightLeds,colorLeds,25);
+  colorWipe(backLeds,colorLeds,25);
+  colorWipe(leftLeds,colorLeds,25);
+  colorWipe(frondLeds,colorLeds,25);
 }
 
 void LedsOff(){

@@ -12,7 +12,7 @@ boolean stringComplete = false;
    Init Setup
  **************************************************************************/
 void setup() {
-  //Manager Ventilattion
+  //Manager Fans
   fanSetup();
 
   //Manage Leds
@@ -24,7 +24,7 @@ void setup() {
   //Init Serial
   Serial.begin(9600);
 
-
+  buzzerPlayStarWarsSong();
 }
 
 /**************************************************************************
@@ -32,6 +32,7 @@ void setup() {
  **************************************************************************/
 void loop() {
 
+  
   ManageTemperature();
 
   if (stringComplete) {
@@ -50,15 +51,12 @@ void loop() {
    Loop
  **************************************************************************/
 void serialEvent() {
-  while (Serial.available()) {
-    // récupérer le prochain octet (byte ou char) et l'enlever
+  while (Serial.available()) {   
     char inChar = (char)Serial.read();
-    // caractère de fin pour notre chaine
     if (inChar == '\n') {
       stringComplete = true;
     }
     else {
-      // concaténation des octets reçus
       inputString += inChar;
     }
   }
