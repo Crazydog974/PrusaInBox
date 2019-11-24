@@ -4,8 +4,8 @@
 
 
 bool isStart = true;
-String inputString = "";   // chaine de caractères pour contenir les données
-boolean stringComplete = false;  // pour savoir si la chaine est complète
+String inputString = "";   
+boolean stringComplete = false;  
 
 
 /**************************************************************************
