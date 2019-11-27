@@ -16,7 +16,7 @@ Api python [Here](https://github.com/KonradIT/gopro-py-api)
 Use GoPro with Octolapse [Here](https://github.com/yet-another-average-joe/OctoLapse-GoPro)
 
 ### tplink-smartplug
-https://github.com/softScheck/tplink-smartplug
+use [tplink-smartplug](https://github.com/softScheck/tplink-smartplug) for turn off TP-LINK HS100 in [print done event](http://docs.octoprint.org/en/1.1.2/events/index.html#printing)
 
 turn on 
 ```bash
@@ -28,3 +28,4 @@ turn off
 ```
 ## OctoPi Plugins
 * [Octolapse](https://plugins.octoprint.org/plugins/octolapse/)
+* [TP-Link Smartplug]
