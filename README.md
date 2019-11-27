@@ -15,5 +15,10 @@ Api python [Here](https://github.com/KonradIT/gopro-py-api)
 ### OctoLapse-GoPro: 
 Use GoPro with Octolapse [Here](https://github.com/yet-another-average-joe/OctoLapse-GoPro)
 
+### tplink-smartplug
+https://github.com/softScheck/tplink-smartplug
+```bash
+ python /home/pi/tplink-smartplug-master/tplink_smartplug.py -t 192.168.1.37 -c on
+```
 ## OctoPi Plugins
 * [Octolapse](https://plugins.octoprint.org/plugins/octolapse/)
