@@ -1,0 +1,1 @@
+python3.6 /home/pi/scripts/gopro-take-snapshot-Test.py

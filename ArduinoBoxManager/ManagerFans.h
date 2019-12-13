@@ -4,3 +4,5 @@ void fanLower();
 void fanHigher();
 void ManageTemperature();
 void ManageFans(String cmd);
+void fanOn();
+void fanOff();

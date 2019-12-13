@@ -10,6 +10,7 @@ Adafruit_NeoPixel pixels(NUMPIXELS, PINLEDS, NEO_BRG + NEO_KHZ800);
 
 bool ledsIsOn = false;
 uint32_t colorLeds = pixels.Color(255, 0, 255);
+uint32_t LastState = pixels.Color(0,0,0);
 
 int frondLeds[8] = {24,25,26,27,28,29,30,31};
 int leftLeds[8] = {16,17,18,19,20,21,22,23};
@@ -19,10 +20,10 @@ int backLeds[8] = {8,9,10,11,12,13,14,15}; //
 void ledsSetup(){
   //Manage Leds
   pixels.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
-  pixels.show();            // Turn OFF all pixels ASAP
-  pixels.setBrightness(255); // Set BRIGHTNESS to about 1/5 (max = 255)
-  colorLeds = pixels.Color(255, 0, 255);
-  ManageAllLeds(pixels.Color(0,0,0));
+//  pixels.show();            // Turn OFF all pixels ASAP
+//  pixels.setBrightness(255); // Set BRIGHTNESS to about 1/5 (max = 255)
+//  ManageAllLeds(LastState);
+//  Serial.println("ledsSetup"); 
 }
 
 void ManageLeds(String cmd)
@@ -123,6 +124,8 @@ void LedsOn(){
   colorWipe(backLeds,colorLeds,25);
   colorWipe(leftLeds,colorLeds,25);
   colorWipe(frondLeds,colorLeds,25);
+
+  LastState = colorLeds;
 }
 
 void LedsOff(){
@@ -134,11 +137,15 @@ void LedsOff(){
   ManageAllLeds(pixels.Color(255,255,255));
   delay(100);
   ManageAllLeds(pixels.Color(0,0,0));
+
+  LastState = pixels.Color(0,0,0);
 }
 
 void flashOn(){
    ManageAllLeds(pixels.Color(255,255,255));
+   LastState = pixels.Color(255,255,255);
 }
 void flashOff(){
    ManageAllLeds(colorLeds);
+   LastState = colorLeds;
 }

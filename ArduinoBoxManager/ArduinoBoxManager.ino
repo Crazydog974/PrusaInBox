@@ -12,6 +12,10 @@ boolean stringComplete = false;
    Init Setup
  **************************************************************************/
 void setup() {
+  
+  //Init Serial
+  Serial.begin(115200); // 115200
+  
   //Manager Fans
   fanSetup();
 
@@ -21,17 +25,15 @@ void setup() {
   //Buzze
   buzzerSetup();
 
-  //Init Serial
-  Serial.begin(9600);
 
-  buzzerPlayStarWarsSong();
+
+  //buzzerPlayStarWarsSong();
 }
 
 /**************************************************************************
    Loop
  **************************************************************************/
 void loop() {
-
   
   ManageTemperature();
 

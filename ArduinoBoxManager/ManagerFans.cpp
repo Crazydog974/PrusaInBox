@@ -1,5 +1,6 @@
 #include "ManagerFans.h"
 #include <Arduino.h>
+#include <EEPROM.h>
 #define FANPIN 9 
 #define INPUTTEMPERATUEPIN 2 
 
@@ -7,10 +8,6 @@ int switchStateControlTemp = 0;
 int oldSwitchStateControlTemp = 0;
 bool fanIsActive=false;
 
-void fanSetup(){
-  pinMode(FANPIN,OUTPUT);
-  pinMode(INPUTTEMPERATUEPIN,INPUT);
-}
 
 void fanOn(){
   int value = 255;
@@ -19,8 +16,16 @@ void fanOn(){
 
 void fanOff(){
   int value = 0;
-  analogWrite(FANPIN,value);  
+  analogWrite(FANPIN,value); 
 }
+
+void fanSetup(){
+  Serial.println("fanSetup"); 
+  pinMode(FANPIN,OUTPUT);
+  pinMode(INPUTTEMPERATUEPIN,INPUT);
+    
+}
+
 
 void ManageTemperature()
 {
