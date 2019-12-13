@@ -3,7 +3,7 @@ Code for my Prusa i3 Mk3s Box with Ikea lack. i'm following ["How to build a sim
 
 ## Materials
 * [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/)
-* [Arduino Uno](https://store.arduino.cc/arduino-uno-rev3)  [Disabling AutoReset on serial connection](https://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection/)
+* [Arduino Uno](https://store.arduino.cc/arduino-uno-rev3) -> Disabling AutoReset on serial connection [here](https://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection/)
 * [leds ws2811](https://www.amazon.fr/gp/product/B01CNL6LLA/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1) 
 * [TP-Link HS100](https://www.tp-link.com/fr/home-networking/smart-plug/hs110/)
 * [http://shd-detecteurs.com/index.php?id=43](http://shd-detecteurs.com/index.php?id=43)
